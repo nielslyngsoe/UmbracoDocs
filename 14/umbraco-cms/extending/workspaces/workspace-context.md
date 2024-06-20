@@ -1,5 +1,5 @@
 ---
-description: Establish an extension to communicate across the application.
+description: Add additional API to the Context of a Workspace. Enabling UI to communicate across the Workspace.
 ---
 
 # Workspace Context
@@ -8,20 +8,28 @@ description: Establish an extension to communicate across the application.
 This page is a work in progress and may undergo further revisions, updates, or amendments. The information contained herein is subject to change without notice.
 {% endhint %}
 
-A Workspace context is a container for the data of a workspace. It is a wrapper around the data of the entity that the workspace is working on. It is responsible for loading and saving the data to the server. Workspace Contexts are used to bring additional context alongside the default context of a workspace.
+A Workspace Context is a API that is provided for the scope of a workspace. A workspace most provide a Workspace Context and can provide addtional ones, mainly via the `workspaceContext` Extension Type.
 
-* A workspace context knows about its entity type (for example content, media, member, etc.) and holds its unique string (for example: key).
-* Most workspace contexts hold a draft state of its entity data. It is a copy of the entity data that can be modified at runtime and sent to the server to be saved.
+The default Workspace Context of a Workspace is where the logic of the workspace is located.
 
-If a workspace wants to utilize Property Editor UIs, then it must provide a variant context for the property editors. The variant-context is the generic interface between workspace and property editors.&#x20;
+A Workspace Context can be what makes sense for its Workspace, but the Core Workspaces(for example Context, Media, Member etc) houses these responsibilities:
+* The data of the entity that the workspace is working on.
+* It must declare the entity type (for example content, media, member, etc.) and provide the unique string for the current entity (for most implementations this is the key written as a GUID, but is can be any string that is unique to the entity).
+* It is responsible for loading and saving the data to the server.
+* Methods to communicate with the server.
 
-```ts
-interface UmbWorkspaceContext {}
-```
 
-## Example of Workspace
+## Integrate property Editor UIs in a Context
 
-## Example of Workspace Context
+If a workspace wants to utilize Property Editor UIs, then it must provide a Property Dataset Context.
+
+Property Editor UIs communicates via a Property Dataset Context, and is therefor the joint between the Workspace Context and the Property Editors.
+
+Read more about Property Dataset Context, which is jet to come.
+
+
+
+## Example of Workspace Context Extension
 
 The API will be initiated with the same host as the default Workspace Context.
 
