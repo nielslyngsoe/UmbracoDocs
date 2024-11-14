@@ -23,11 +23,14 @@ This page is a work in progress and may undergo further revisions, updates, or a
 ```typescript
 {
  "type": "menuItem",
+ "kind": "link",
  "alias": "My.MenuItem",
  "name": "My Menu Item",
  "meta": {
+  "menus": ["My.Menu"],
   "label": "My Menu Item",
-  "menus": ["My.Menu"]
+  "icon": 'icon-hearts',
+  "href": 'https://www.umbraco.com/',
  }
 }
 ```
